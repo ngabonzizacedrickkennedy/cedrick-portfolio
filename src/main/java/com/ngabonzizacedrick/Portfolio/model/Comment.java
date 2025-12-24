@@ -1,17 +1,8 @@
-package com.ngabonzizacedrick.portfolio.model;
+package com.ngabonzizacedrick.Portfolio.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "comments")
@@ -46,5 +37,13 @@ public class Comment extends BaseEntity {
 
     public boolean isReply() {
         return parentComment != null;
+    }
+
+    public void approve() {
+        this.approved = true;
+    }
+
+    public void markAsEdited() {
+        this.edited = true;
     }
 }
