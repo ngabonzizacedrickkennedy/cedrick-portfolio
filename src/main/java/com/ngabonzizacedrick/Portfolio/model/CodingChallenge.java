@@ -109,28 +109,6 @@ public class CodingChallenge extends BaseEntity {
         PHP,
         RUBY
     }
-
-    @Embeddable
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
-    public static class TestCase {
-        
-        @Column(name = "input", columnDefinition = "TEXT")
-        private String input;
-        
-        @Column(name = "expected_output", columnDefinition = "TEXT")
-        private String expectedOutput;
-        
-        @Column(name = "is_hidden")
-        private Boolean isHidden = false; // Hidden test cases for validation
-        
-        @Column(name = "description")
-        private String description;
-    }
-
     public void incrementAttemptCount() {
         this.attemptCount++;
     }
@@ -143,4 +121,6 @@ public class CodingChallenge extends BaseEntity {
         if (attemptCount == 0) return 0.0;
         return (successCount * 100.0) / attemptCount;
     }
+
+
 }
