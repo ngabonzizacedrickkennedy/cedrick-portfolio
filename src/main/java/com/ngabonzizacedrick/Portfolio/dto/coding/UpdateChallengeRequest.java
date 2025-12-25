@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.Set;
 
@@ -23,9 +23,9 @@ class UpdateChallengeRequest {
     @Size(min = 20, message = "Description must be at least 20 characters")
     private String description;
     
-    private CodingChallenge.Difficulty difficulty;
+    private CodingChallenge.DifficultyLevel difficulty;
     
-    private CodingChallenge.Language language;
+    private CodingChallenge.ProgrammingLanguage language;
     
     private String solutionTemplate;
     

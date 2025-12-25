@@ -20,8 +20,8 @@ class ChallengeResponse {
     private String title;
     private String slug;
     private String description;
-    private CodingChallenge.Difficulty difficulty;
-    private CodingChallenge.Language language;
+    private CodingChallenge.DifficultyLevel difficulty;
+    private CodingChallenge.ProgrammingLanguage language;
     private String solutionTemplate;
     private List<TestCaseResponse> sampleTestCases; // Only sample test cases
     private Set<String> tags;

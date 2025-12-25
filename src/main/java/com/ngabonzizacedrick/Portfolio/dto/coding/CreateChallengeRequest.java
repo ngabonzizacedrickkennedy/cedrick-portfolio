@@ -26,10 +26,10 @@ class CreateChallengeRequest {
     private String description;
     
     @NotNull(message = "Difficulty is required")
-    private CodingChallenge.Difficulty difficulty;
+    private CodingChallenge.DifficultyLevel difficulty;
     
     @NotNull(message = "Programming language is required")
-    private CodingChallenge.Language language;
+    private CodingChallenge.ProgrammingLanguage language;
     
     @NotBlank(message = "Solution template is required")
     private String solutionTemplate;

@@ -90,6 +90,7 @@ public class CodingChallenge extends BaseEntity {
     @JoinColumn(name = "created_by")
     private User createdBy;
 
+    // Enums
     public enum DifficultyLevel {
         EASY,
         MEDIUM,
@@ -109,6 +110,33 @@ public class CodingChallenge extends BaseEntity {
         PHP,
         RUBY
     }
+
+    // Inner Embeddable Class for TestCase
+    @Embeddable
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class TestCase {
+        
+        @Column(name = "input", columnDefinition = "TEXT", nullable = false)
+        private String input;
+        
+        @Column(name = "expected_output", columnDefinition = "TEXT", nullable = false)
+        private String expectedOutput;
+        
+        @Column(name = "is_sample", nullable = false)
+        private Boolean isSample = false;
+        
+        @Column(name = "explanation", columnDefinition = "TEXT")
+        private String explanation;
+        
+        @Column(name = "test_order")
+        private Integer testOrder;
+    }
+
+    // Business methods
     public void incrementAttemptCount() {
         this.attemptCount++;
     }
@@ -121,6 +149,16 @@ public class CodingChallenge extends BaseEntity {
         if (attemptCount == 0) return 0.0;
         return (successCount * 100.0) / attemptCount;
     }
-
-
+    
+    public List<TestCase> getSampleTestCases() {
+        return testCases.stream()
+                .filter(TestCase::getIsSample)
+                .toList();
+    }
+    
+    public List<TestCase> getHiddenTestCases() {
+        return testCases.stream()
+                .filter(tc -> !tc.getIsSample())
+                .toList();
+    }
 }
