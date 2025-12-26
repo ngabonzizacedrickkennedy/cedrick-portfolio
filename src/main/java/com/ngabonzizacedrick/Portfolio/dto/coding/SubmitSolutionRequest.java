@@ -7,9 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Set;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -23,5 +21,5 @@ class SubmitSolutionRequest {
     private String code;
     
     @NotNull(message = "Language is required")
-    private CodingChallenge.Language language;
+    private CodingChallenge.ProgrammingLanguage language;
 }
